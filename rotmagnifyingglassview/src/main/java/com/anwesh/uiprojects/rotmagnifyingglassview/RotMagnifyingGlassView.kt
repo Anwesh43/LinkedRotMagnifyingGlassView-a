@@ -36,7 +36,7 @@ fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 fun Float.sinify() : Float = Math.sin(this * Math.PI).toFloat()
 
-fun Canvas.drawRotMagnifyingGlass(scale : Float, w : Float, h : Float, paint : Paint) {
+fun Canvas.drawRotMagnifyingGlass(scale : Float, w : Float, h : Float, si : Int, paint : Paint) {
     val sf : Float = scale.sinify()
     val sf1 : Float = sf.divideScale(0, parts)
     val sf2 : Float = sf.divideScale(1, parts)
@@ -45,7 +45,7 @@ fun Canvas.drawRotMagnifyingGlass(scale : Float, w : Float, h : Float, paint : P
     val cSize : Float = h / rFactor
     save()
     translate(w / 2, h / 2)
-    rotate(rot * sf3)
+    rotate(rot * sf3 * si)
     drawLine(0f, 0f, 0f, -lSize * sf1, paint)
     save()
     translate(0f, -lSize * sf1)
@@ -61,7 +61,7 @@ fun Canvas.drawRMGNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
-    drawRotMagnifyingGlass(scale, w, h, paint)
+    drawRotMagnifyingGlass(scale, w, h, 1 - 2 * (i % 2), paint)
 }
 
 class RotMagnifyingGlassView(ctx : Context) : View(ctx) {
