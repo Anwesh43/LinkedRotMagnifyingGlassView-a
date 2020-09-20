@@ -190,4 +190,27 @@ class RotMagnifyingGlassView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotMagnifyingGlassView) {
+
+        private val animator : Animator = Animator(view)
+        private val rmg : RotMagnifyingGlass = RotMagnifyingGlass(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rmg.draw(canvas, paint)
+            animator.animate {
+                rmg.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rmg.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
