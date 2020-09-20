@@ -215,4 +215,13 @@ class RotMagnifyingGlassView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : RotMagnifyingGlassView {
+            val view : RotMagnifyingGlassView = RotMagnifyingGlassView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
