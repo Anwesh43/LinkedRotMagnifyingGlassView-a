@@ -63,3 +63,20 @@ fun Canvas.drawRMGNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawRotMagnifyingGlass(scale, w, h, paint)
 }
+
+class RotMagnifyingGlassView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean  {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+
+}
