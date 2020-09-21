@@ -19,7 +19,7 @@ val colors : Array<Int> = arrayOf(
         "#3F51B5",
         "#4CAF50"
 ).map({Color.parseColor(it)}).toTypedArray()
-val lines : Int = 3
+val lines : Int = 5
 val parts : Int = lines + 1
 val scGap : Float = 0.02f / parts
 val strokeFactor : Float = 90f
@@ -41,11 +41,11 @@ fun Canvas.drawBarSideNav(i : Int, scale : Float, w : Float, h : Float, paint : 
     paint.color = colors[(i + 1) % colors.size]
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
-    val gap : Float = h / (2 * lines)
+    val gap : Float = h / (lines + 1)
     for (j in 0..(lines - 1)) {
         val sfj : Float = sf.divideScale(j + 1, parts)
         save()
-        translate(0f, gap + gap * i)
+        translate(0f, gap + gap * j)
         drawLine(0f, 0f, size * sfj, 0f, paint)
         restore()
     }
