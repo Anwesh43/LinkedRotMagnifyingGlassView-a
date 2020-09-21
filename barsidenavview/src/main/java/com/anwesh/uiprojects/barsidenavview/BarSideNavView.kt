@@ -31,3 +31,26 @@ fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 fun Float.sinify() : Float = Math.sin(this * Math.PI).toFloat()
+
+fun Canvas.drawBarSideNav(i : Int, scale : Float, w : Float, h : Float, paint : Paint) {
+    val sf : Float = scale.sinify()
+    val sf1 : Float = sf.divideScale(0, parts)
+    paint.color = colors[i]
+    val size : Float = w / sizeFactor
+    drawRect(RectF(0f, 0f, size * sf1, h), paint)
+    paint.color = colors[(i + 1) % colors.size]
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    val gap : Float = h / (2 * lines)
+    for (j in 0..(lines - 1)) {
+        val sfj : Float = sf.divideScale(j + 1, parts)
+        save()
+        translate(0f, gap + gap * i)
+        drawLine(0f, 0f, size * sfj, 0f, paint)
+        restore()
+    }
+}
+
+fun Canvas.drawBSNNode(i : Int, scale : Float, paint : Paint) {
+    drawBarSideNav(i, scale, width.toFloat(), height.toFloat(), paint)
+}
