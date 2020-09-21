@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LinkedRotMagnifyingGlassView.iml" filepath="$PROJECT_DIR$/LinkedRotMagnifyingGlassView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/barsidenavview/barsidenavview.iml" filepath="$PROJECT_DIR$/barsidenavview/barsidenavview.iml" />
       <module fileurl="file://$PROJECT_DIR$/rotmagnifyingglassview/rotmagnifyingglassview.iml" filepath="$PROJECT_DIR$/rotmagnifyingglassview/rotmagnifyingglassview.iml" />
     </modules>
   </component>
