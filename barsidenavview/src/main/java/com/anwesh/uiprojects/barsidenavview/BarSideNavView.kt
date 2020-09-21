@@ -54,3 +54,19 @@ fun Canvas.drawBarSideNav(i : Int, scale : Float, w : Float, h : Float, paint : 
 fun Canvas.drawBSNNode(i : Int, scale : Float, paint : Paint) {
     drawBarSideNav(i, scale, width.toFloat(), height.toFloat(), paint)
 }
+
+class BarSideNavView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
